@@ -1,0 +1,189 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: black !important;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    position: relative; /* Necesario para el efecto de puntos */
+}
+/* Estilo para los puntos */
+.dot {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.6); /* Color de los puntos (blanco semi-transparente) */
+    border-radius: 50%;
+    animation: moveDots 1s linear infinite; /* Animación de movimiento */
+}
+/* Keyframes para la animación de los puntos */
+@keyframes moveDots {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(50px, 50px); /* Ajusta la distancia de movimiento de los puntos */
+    }
+}
+#score-container {
+    color: white; /* Color del texto para el marcador de puntuación */
+    font-size: 50px;
+   
+}
+#score-text {
+    color: white; /* Color del texto "score" */
+    font-size: 30px; /* Tamaño de fuente del texto "score" */
+    margin-left: 0px; /* Ajuste de espacio a la izquierda */
+}
+
+#title-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+#game-title {
+    font-size: 6em;
+    animation: blinkTitle 0.5s infinite alternate;
+}
+#game-container {
+    position: relative;
+}
+#gameCanvas {
+    border: 2px solid black; /* Cambia el grosor del borde a 4px */
+    width: 600px; /* Ajusta el ancho del canvas */
+    height: 600px; /* Ajusta la altura del canvas */
+    animation: blinkBorder 0.5s infinite alternate;
+}
+@keyframes blinkBorder {
+    0% {
+        border-color: black;
+    }
+    100% {
+        border-color: red;
+    }
+}
+#background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #FF5733, #FFE933, #33FF57, #33D1FF, #F233FF);
+    background-size: 400% 400%;
+    animation: changeBackground 10s ease infinite;
+}
+
+@keyframes changeBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+/* Media queries para dispositivos móviles */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px; /* Cambia el tamaño de fuente general */
+    }
+
+    #gameCanvas {
+        width: 300px; /* Ajusta el ancho del canvas */
+        height: 300px; /* Ajusta la altura del canvas */
+    }
+}
+/*-----------------------------------------------------------------*/
+#buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.button-animation {
+    position: relative;
+    background-color: red; /* Color de fondo inicial */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 11.5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transición suave al cambiar el color */
+    overflow: hidden;
+}
+.button-animation:hover {
+    background-color: #8E44AD ; /* Color de fondo al pasar el mouse */
+}
+
+.button-animation::before,
+.button-animation::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: #000;
+    border-radius: 50%;
+    animation: moveDots 1s infinite alternate;
+}
+.button-animation::before {
+    top: 50%;
+    left: 20%;
+}
+
+.button-animation::after {
+    top: 20%;
+    left: 50%;
+}
+/*-----------------------------------------------------------------*/
+/*puntuacion anmiamdo a colores*/
+.score-animation {
+    animation: moveScore 2s infinite alternate; 
+}
+
+@keyframes bounceButton {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes moveScore {
+    0% {
+        transform: translateX(0);
+        color: red;
+    }
+    25% {
+        transform: translateX(5px);
+        color: orange;
+    }
+    50% {
+        transform: translateX(0);
+        color: yellow;
+    }
+    75% {
+        transform: translateX(-5px);
+        color: green;
+    }
+    100% {
+        transform: translateX(0);
+        color: blue;
+    }
+}
+
+
+
+
